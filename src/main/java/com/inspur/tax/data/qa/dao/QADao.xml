@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="QuestionLog">
+    <select id="queryQuestions" parameterType="Map" resultType="Map">
+        SELECT *
+        FROM question_logs;
+    </select>
+    <!--<insert id="addOneQuestionLog" parameterType="Map">-->
+    <!--INSERT INTO-->
+    <!--question_logs (uuid , question , isok , bz , dev_id , answer , username , channel_id)-->
+    <!--VALUES (-->
+    <!--#{uuid , jdbcType=VARCHAR},-->
+    <!--#{question , jdbcType=VARCHAR},-->
+    <!--#{isok , jdbcType=VARCHAR},-->
+    <!--#{bz , jdbcType=VARCHAR},-->
+    <!--#{devId , jdbcType=VARCHAR},-->
+    <!--#{answer , jdbcType=VARCHAR},-->
+    <!--#{username , jdbcType=VARCHAR},-->
+    <!--#{channelId , jdbcType=VARCHAR}-->
+    <!--)-->
+    <!--</insert>-->
+    <!--<update id="updateQuestionLog" parameterType="Map">-->
+    <!--UPDATE question_logs SET yxbz = 'Y'-->
+    <!--<if test="isok != null">-->
+    <!--, isok = #{isok , jdbcType=VARCHAR}-->
+    <!--</if>-->
+    <!--<if test="devId != null">-->
+    <!--, dev_id = #{devId , jdbcType=VARCHAR}-->
+    <!--</if>-->
+    <!--<if test="answer != null">-->
+    <!--, answer = #{answer , jdbcType=VARCHAR}-->
+    <!--</if>-->
+    <!--<if test="channelId != null">-->
+    <!--, channel_id = #{channelId , jdbcType=VARCHAR}-->
+    <!--</if>-->
+    <!--<if test="bz != null">-->
+    <!--, bz = #{bz , jdbcType=VARCHAR}-->
+    <!--</if>-->
+    <!--WHERE uuid = #{uuid , jdbcType=VARCHAR}-->
+    <!--</update>-->
+    <!--<insert id="addSample" parameterType="Map">-->
+    <!--INSERT INTO-->
+    <!--robot_samples (question , devid , answer )-->
+    <!--VALUES (-->
+    <!--#{question , jdbcType=VARCHAR},-->
+    <!--#{devid , jdbcType=VARCHAR},-->
+    <!--#{answer , jdbcType=VARCHAR}-->
+    <!--)-->
+    <!--</insert>-->
+    <!--<select id="queryIntent" parameterType="String" resultType="Map">-->
+    <!--SELECT-->
+    <!--INTENT,-->
+    <!--COUNT(1) SIZE FROM INTENT_SAMPLES-->
+    <!--WHERE TEXT = #{text , jdbcType=VARCHAR} GROUP BY INTENT ORDER BY SIZE DESC-->
+    <!--</select>-->
+    <!--<insert id="addIntent" parameterType="Map">-->
+    <!--insert into intent_samples(-->
+    <!--text, intent-->
+    <!--)values (-->
+    <!--#{text , jdbcType=VARCHAR},#{intent , jdbcType=VARCHAR}-->
+    <!--)-->
+    <!--</insert>-->
+</mapper>

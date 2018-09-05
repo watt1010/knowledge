@@ -1,0 +1,8 @@
+db:
+  mysql:
+      driverClass: com.mysql.cj.jdbc.Driver
+      jdbcUrl: jdbc:mysql://10.19.32.78:3306/tax_knowledge?useUnicode=true&characterEncoding=gb2312
+      user: root
+      password: Abcd1234!
+  mybatis:
+      mybatisXml: /mybatis.xml
