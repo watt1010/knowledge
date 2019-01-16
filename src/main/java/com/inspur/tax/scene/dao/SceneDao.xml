@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SceneDao">
+
+    <select id="isScene" parameterType="Map" resultType="Map">
+      select EN_ID from sence_entity where EN_TYPE_ID ='1' and EN_ID = #{id,jdbcType=VARCHAR}
+      and USER_ID = #{user_id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="queryNodeSpeech" parameterType="Map" resultType="Map">
+      select EN_SAY from sence_entity where EN_ID = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="queryEnSon" parameterType="Map" resultType="Map">
+      select EN_ID,EN_TYPE_ID,EN_NAME,EN_SAY,USER_ID
+      from sence_entity se where en_pid=#{id,jdbcType=VARCHAR}
+      and USER_ID = #{user_id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="querySame" parameterType="Map" resultType="Map">
+        SELECT full_name FROM abbreviation_dictionary WHERE abbr_name=#{talk,jdbcType=VARCHAR}
+    </select>
+
+    <select id="querySpeechWord" parameterType="Map" resultType="String">
+        SELECT abbr_name FROM abbreviation_dictionary WHERE full_name=#{en_name,jdbcType=VARCHAR}
+    </select>
+
+    <select id="queryHaveSon" parameterType="Map" resultType="Map">
+        SELECT EN_ID FROM sence_entity WHERE EN_PID= #{EN_ID,jdbcType=VARCHAR}
+        and USER_ID = #{USER_ID,jdbcType=VARCHAR}
+    </select>
+</mapper>

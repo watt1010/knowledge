@@ -1,8 +1,12 @@
 db:
   mysql:
-      driverClass: com.mysql.cj.jdbc.Driver
-      jdbcUrl: jdbc:mysql://10.19.32.78:3306/tax_knowledge?useUnicode=true&characterEncoding=gb2312
-      user: root
-      password: Abcd1234!
+      driverClass: com.mysql.cj.jdbc.Driver #这个是mysql驱动配置不需要改动
+      jdbcUrl: jdbc:mysql://10.111.29.21:3306/tax_knowledge?useUnicode=true&characterEncoding=gb2312 #mysql地址端口号配置
+      user: root #mysql用户名和密码配置
+      password: Abcd1234! #mysql用户名和密码配置
   mybatis:
-      mybatisXml: /mybatis.xml
+      mybatisXml: /mybatis.xml #mybatis文件配置路径
+lucene:
+  root: /root/lucene/  #Lucene索引位置的根目录
+  indexKey: questionWithSynonyms #这个是Lucene查询、建立索引的时候共享的一个key，这个key可以一直不改变
+  vectorPath: /root/data/wiki_chinese_word2vec(Google)_200d.bin #词向量物理路径

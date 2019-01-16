@@ -3,6 +3,9 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <mappers>
-        <mapper resource="com/inspur/tax/data/qa/dao/QADao.xml"/>
+        <mapper resource="com/inspur/tax/mvc/dao/QADao.xml"/>
+        <mapper resource="com/inspur/tax/scene/dao/SceneDao.xml"/>
+        <mapper resource="com/inspur/tax/mvc/dao/ExposedDao.xml"/>
+        <mapper resource="com/inspur/tax/commen/dao/UserDao.xml"/>
     </mappers>
 </configuration>

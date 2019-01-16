@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="QADao">
+    <select id="queryQuestions" parameterType="Map" resultType="Map">
+        SELECT
+            Q.Q_UTTERANCE AS QUESTION,
+            Q.KW_ID,
+            Q.USER_ID
+        FROM intelligent_consulting.QA_KB_QUESTION Q, intelligent_consulting.QA_KB_ANS A
+        WHERE Q.KW_ID = A.KW_ID
+        and A.IS_VALID = 'Y'
+        and Q.USER_ID = #{user_id , jdbcType=VARCHAR}
+        LIMIT #{start , jdbcType=INTEGER}, #{end , jdbcType=INTEGER}
+    </select>
+    <select id="queryAnswer" parameterType="Map" resultType="Map">
+        SELECT
+        TEXT_ANS,
+        IFNULL(REF_ID, '') REF_ID,
+        MEDIA_TYPE
+        FROM intelligent_consulting.qa_kb_ans
+        WHERE qa_kb_ans.KW_ID = #{key , jdbcType=VARCHAR}
+        and qa_kb_ans.user_id = #{user_id , jdbcType=VARCHAR}
+    </select>
+    <select id="queryDictionaryAll" parameterType="String" resultType="Map">
+        SELECT WORD
+        FROM CUSTOM_DICTIONARY
+    </select>
+    <insert id="addTaxDictionaryWord" parameterType="String">
+        INSERT INTO TAX_DICTIONARY (WORD) VALUES (#{word , jdbcType=VARCHAR})
+    </insert>
+    <select id="querySynonyms" parameterType="String" resultType="String">
+        SELECT CONCAT(ID, TYPE, ' ', SYNONYM) TEXT
+        FROM SYNONYM_DICTIONARY
+    </select>
+    <!-- 查询词林同义词词典，根据条件查询同义词等 -->
+    <select id="querySynonymsAll" parameterType="Map" resultType="Map">
+        SELECT * FROM SYNONYM_DICTIONARY
+        WHERE IS_VALID = 'Y'
+        <if test="type != null and type != ''">
+            AND TYPE = #{type , jdbcType=VARCHAR}
+        </if>
+        <if test="industry_id != null and industry_id != ''">
+            AND INDUSTRY_ID = #{industry_id , jdbcType=VARCHAR}
+        </if>
+    </select>
+    <insert id="createSynonym" parameterType="Map">
+        INSERT INTO synonym_dictionary (id, synonym) VALUES (#{id , jdbcType=VARCHAR}, #{synonym , jdbcType=VARCHAR})
+    </insert>
+    <!--查询全、简称词典数据-->
+    <select id="queryAbbreviation" parameterType="Map" resultType="Map">
+        SELECT * FROM ABBREVIATION_DICTIONARY
+        WHERE IS_VALID = 'Y'
+        <if test="abbr_name != null and abbr_name != ''">
+            AND ABBR_NAME = #{abbr_name , jdbcType=VARCHAR}
+        </if>
+        <if test="full_name != null and full_name != ''">
+            AND FULL_NAME = #{full_name , jdbcType=VARCHAR}
+        </if>
+    </select>
+    <insert id="createLog" parameterType="Map">
+        INSERT INTO qa_logs (question, score, kw_id, channel_id, user_id)
+        VALUES (#{question , jdbcType=VARCHAR}, #{score , jdbcType=VARCHAR},
+                #{kw_id , jdbcType=VARCHAR}, #{channel_id , jdbcType=VARCHAR},
+                #{user_id , jdbcType=VARCHAR})
+    </insert>
+
+    <select id="queryUsers" resultType="String">
+        select user_id from qa_users
+    </select>
+    <select id="queryStopWordsAll" resultType="String">
+        SELECT word
+        FROM stopwords_dictionary
+    </select>
+    <select id="queryMediaUrlByREF_ID" resultType="Map" parameterType="Map">
+      SELECT MEDIA_URL FROM intelligent_consulting.qa_kb_media WHERE MEDIA_ID = #{REF_ID , jdbcType=VARCHAR}
+    </select>
+</mapper>

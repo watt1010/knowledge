@@ -60,13 +60,12 @@ public class HanLPTokenizer extends Tokenizer {
         int position = 0;
         Term term;
         boolean un_increased = true;
-        do {
+        do { //循环过滤到干扰项字符。有标点以及空格等
             term = segment.next();
             if (term == null) {
                 break;
             }
-            if (TextUtility.isBlank(term.word)) // 过滤掉空白符，提高索引效率
-            {
+            if (TextUtility.isBlank(term.word)) { // 过滤掉空白符，提高索引效率
                 continue;
             }
             if (enablePorterStemming && term.nature == Nature.nx) {
