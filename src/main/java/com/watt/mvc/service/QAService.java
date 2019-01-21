@@ -21,7 +21,7 @@ public class QAService {
      * 查询所有的问题列表，根据start 和 end 作为大数据下的分页
      */
     public List<Map<String, String>> queryQuestions(int start, int end) {
-        Map param = new HashMap<>();
+        Map param = new HashMap<String, Integer>();
         param.put("start", start);
         param.put("end", end);
         return qaDao.queryQuestions(param);
@@ -65,7 +65,7 @@ public class QAService {
      */
     public Map<String, String> queryAnswer(String key) {
         Map<String, String> map = new HashMap<>();
-        map.put("key",key);
+        map.put("key", key);
         List<Map<String, String>> result = qaDao.queryAnswer(map);
         if (result == null || result.isEmpty()) {
             return null;
@@ -100,7 +100,7 @@ public class QAService {
 
     public String queryMediaUrlByREF_ID(String key) {
         Map<String, String> param = new HashMap<>();
-        param.put("REF_ID",key);
+        param.put("REF_ID", key);
         Map map = qaDao.queryMediaUrlByREF_ID(param);
         return map.get("MEDIA_URL").toString();
     }
