@@ -10,8 +10,6 @@
     <packaging>war</packaging>
 
     <name>knowledge-core Maven Webapp</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.inspur.com</url>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -114,7 +112,7 @@
     </dependencies>
 
     <build>
-        <finalName>knowledge-core</finalName>
+        <finalName>knowledge</finalName>
         <resources>
             <resource>
                 <directory>src/main/java</directory>
@@ -147,10 +145,7 @@
                     <include>**/*.jar</include>
                 </includes>
             </resource>
-
-
         </resources>
-
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
