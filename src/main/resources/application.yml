@@ -9,4 +9,4 @@ db:
 lucene:
   root: /root/lucene/  #Lucene索引位置的根目录
   indexKey: questionWithSynonyms #这个是Lucene查询、建立索引的时候共享的一个key，这个key可以一直不改变
-  vectorPath: /root/data/wiki_chinese_word2vec(Google)_200d.bin #词向量物理路径
+  vectorPath: /root/data/wiki_chinese_word2vec.bin #词向量物理路径
