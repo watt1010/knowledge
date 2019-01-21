@@ -116,7 +116,7 @@ lucene:
 - com.inspur.tax.data.jdbc	mysql数据库配置类
 - com.inspur.tax.mvc	知识库接口提供类
 - com.inspur.tax.scene	场景式相关类
-- com.inspur.tax.CloudApplication	springboot程序入口
+- CloudApplication	springboot程序入口
 
 ## 7.	程序功能代码入口
 所有的程序功能入口都在QAController类中

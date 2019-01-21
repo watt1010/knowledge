@@ -1,16 +1,12 @@
 package lucene;
 
-import com.hankcs.hanlp.HanLP;
 import com.hankcs.hanlp.dictionary.CoreSynonymDictionary;
 import com.hankcs.hanlp.dictionary.common.CommonSynonymDictionary;
-import com.hankcs.hanlp.seg.Segment;
-import com.hankcs.hanlp.seg.common.Term;
 import com.hankcs.hanlp.tokenizer.NotionalTokenizer;
 import com.hankcs.lucene.HanLPAnalyzer;
-import com.inspur.tax.core.nlp.cosinesimlarity.SimilarityAnalyze;
-import com.inspur.tax.core.nlp.cosinesimlarity.SimilarityAnalyzeUnfamiliarWords;
-import com.inspur.tax.util.FileUtils;
-import com.inspur.tax.util.NLPUtils;
+import com.watt.core.nlp.cosinesimlarity.SimilarityAnalyzeUnfamiliarWords;
+import com.watt.util.FileUtils;
+import com.watt.util.NLPUtils;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.core.KeywordAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
