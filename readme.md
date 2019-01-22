@@ -1,21 +1,17 @@
 # 咨询知识库系统概要
 感谢HanLp、Luncene等开源系统给我们开发系统带来的便捷，也诚挚的邀请各位大神参与完善这个项目来供更多的人学习使用
-##大纲
-- 	安装与部署
-- 	Lucene全文检索
-- 	词向量
--	语义相似度
 ##安装部署
-####语料数据准备：
-百度网盘下载地址：
-####数据库初始化
+###语料数据准备：
+百度网盘下载地址：https://pan.baidu.com/s/1Syhk2Ehv_5Of19bHlFNSig 
+提取码：04ay  
+###数据库初始化
 数据库采用mysql进行静态的数据存储，请在网盘中一并下载
 ```
 init.sql
 ```
-####项目构建工具
-项目采用maven的项目管理工具管理，并且核心采用的SpringBoot微服务框架开发。此处建议使用idea工具进行编辑开发。
-####配置说明
+###项目构建工具
+项目采用maven的项目管理工具管理，并且采用的SpringBoot微服务框架开发。此处建议使用idea、eclipse等工具进行编辑开发。
+###配置说明
 ####HanLp配置说明（hanlp.properties）：
 项目中只需要配置这个root就可以了，root参数是HanLp分词数据包的物理路径
 ``` properties
@@ -38,28 +34,28 @@ db:
       user: username #mysql用户名和密码配置
       password: password #mysql用户名和密码配置
 ```
-####项目编译
+###项目编译
 执行maven命令，如果不懂maven的童鞋，请恶补一下基础知识，哈哈
 ```
 mvn clean install 
 ```
-####启动应用
+###启动应用
 springboot项目启动只需要启动编译好的编译包就可以了，不懂springboot的童鞋要使劲学习啦。
 ```
 java -jar knowledge.war
 ```
-####创建索引库
+###创建索引库
 通过浏览器访问创建索引的接口：
 ```
 http://ip:8080/createIndex
 ```
-####测试结果
+###测试结果
 浏览器访问
 ```
 http://ip:8080/getAnswer?question=收不到验证码
 ```
 ## 	语义相似度（余弦相似度分析、词林）
-语义相似度计算采用余弦相似度计算的方法，针对专业性的知识库经验证，余弦相似度最适合，调用方式（SimilarityAnalyzeUnfamiliarWords）为： 
+语义相似度计算采用余弦相似度计算的方法，针对专业性的知识库，经验证，余弦相似度最适合，调用方式（SimilarityAnalyzeUnfamiliarWords）为： 
 ``` java
 double score = similarAnalyze.sentenceSimilarity(seg_question, seg_question2);
 //计算第一句话得每一个词和另一句话中最相似的词的相似度
