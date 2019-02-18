@@ -74,6 +74,7 @@ public class QuestionsIndex {
                     doc.add(new Field("questions", word.get("QUESTION"), TextField.TYPE_STORED));
                     doc.add(new Field(luceneConfig.getIndexKey(), addSynonymItems(word.get("QUESTION")), TextField.TYPE_STORED));
                     doc.add(new Field("key", word.get("KW_ID"), TextField.TYPE_STORED));
+                    doc.add(new Field("questionID", word.get("QUESTION_ID"), TextField.TYPE_STORED));
                     try {
                         writer.addDocument(doc);
                     } catch (IOException e) {

@@ -12,8 +12,22 @@ public class CommonUtils {
         JSONArray result = new JSONArray();
         for (int i = 0; target.size() > 0; i++) {
             JSONObject iobj = findMaxScore(target);
-            removeOne(target,iobj);
+            removeOne(target, iobj);
             result.add(iobj);
+        }
+        return result;
+    }
+
+    /**
+     * 获得JSON列表的top N
+     *
+     * @param target 目表array
+     * @param n      多少个
+     */
+    public static JSONArray getTop(JSONArray target, int n) {
+        JSONArray result = new JSONArray();
+        for (int i = 0; i < target.size() && i < n; i++) {
+            result.add(target.get(i));
         }
         return result;
     }
@@ -21,10 +35,10 @@ public class CommonUtils {
     /**
      * 遍历整个list找出一个最大的Object
      */
-    private static JSONObject findMaxScore(JSONArray target){
+    private static JSONObject findMaxScore(JSONArray target) {
         JSONObject firstObject = target.getJSONObject(0);
         for (int i = 1; i < target.size(); i++) {
-            if(target.getJSONObject(i).getDouble("score") > firstObject.getDouble("score")){
+            if (target.getJSONObject(i).getDouble("score") > firstObject.getDouble("score")) {
                 firstObject = target.getJSONObject(i);
             }
         }
@@ -34,14 +48,15 @@ public class CommonUtils {
     /**
      * 移除某个key为制定的object
      */
-    private static void removeOne(JSONArray target, JSONObject one){
+    private static void removeOne(JSONArray target, JSONObject one) {
         for (int i = 0; i < target.size(); i++) {
-            if(target.getJSONObject(i).get("key").equals( one.get("key"))){
+            if (target.getJSONObject(i).get("questionID").equals(one.get("questionID"))) {
                 target.remove(i);
                 return;
             }
         }
     }
+
 //    public static void main(String[] args) {
 //        JSONArray array = new JSONArray();
 //        JSONObject object1 = new JSONObject();
