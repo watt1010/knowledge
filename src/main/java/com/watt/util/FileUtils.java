@@ -1,6 +1,7 @@
 package com.watt.util;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -52,9 +53,18 @@ public class FileUtils {
      * @return 大文件读取的文件流
      */
     public static BufferedReader getFileReader(File file) throws FileNotFoundException {
-        return new BufferedReader(new InputStreamReader(new BufferedInputStream(new FileInputStream(file))));
+        return new BufferedReader(new InputStreamReader(new BufferedInputStream(new FileInputStream(file)), Charset.forName("GBK")));
     }
 
+    /**
+     * 给定文件返回读取方法
+     *
+     * @param file 目标文件
+     * @return 大文件读取的文件流
+     */
+    public static BufferedReader getFileReader(File file, Charset charset) throws FileNotFoundException {
+        return new BufferedReader(new InputStreamReader(new BufferedInputStream(new FileInputStream(file)), charset));
+    }
     /**
      * 给定文件返回读取方法
      *

@@ -1,6 +1,5 @@
 package com.watt.core.dictionary;
 
-import com.hankcs.hanlp.dictionary.CoreSynonymDictionary;
 import com.hankcs.hanlp.dictionary.CustomDictionary;
 import com.watt.mvc.service.QAService;
 import org.slf4j.Logger;
@@ -36,7 +35,7 @@ public class MyCustomDictionary {
 
     public void initCiLinSynonyms() {
         List<String> synonyms = qaService.querySynonyms();
-        CoreSynonymDictionary.reload(synonyms);
+        //CoreSynonymDictionary.reload(synonyms);
         logger.info("共加载同义词词汇：" + synonyms.size());
     }
 
