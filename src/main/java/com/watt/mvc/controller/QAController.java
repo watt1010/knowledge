@@ -32,7 +32,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -48,7 +52,7 @@ public class QAController {
     private SimilarityAnalyze similarAnalyze = new SimilarityAnalyzeUnfamiliarWords();
     private QAService qaService;
     private MyCustomDictionary myCustomDictionary;
-
+    private Map<String,Double> tfidf = null;
     @Autowired
     public QAController(LuceneConfig luceneConfig, QuestionsIndex questionsIndex, QAService qaService, MyCustomDictionary myCustomDictionary) {
         this.luceneConfig = luceneConfig;
@@ -67,6 +71,8 @@ public class QAController {
         initCilin();
         //初始化分词服务
         initSeg();
+        //初始化tfidf模型
+        initTfidf();
     }
 
     /**
@@ -83,6 +89,15 @@ public class QAController {
     private void initWordVectors() {
         similarAnalyze.loadGoogleModel(luceneConfig.getVectorPath());
         logger.info("词向量加载完成");
+    }
+
+    private void initTfidf(){
+        try {
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(new File(luceneConfig.getTfidfPath())));
+            tfidf = (HashMap<String,Double>)in.readObject();
+        }catch (Exception e){
+            logger.error("tfidf模型没有加载成功");
+        }
     }
 
     /**
@@ -136,6 +151,7 @@ public class QAController {
                 question, qaAnalyzeResult.getScore(), resultArray,
                 answer.get("TEXT_ANS"), qaAnalyzeResult.getKey(), answer.get("MEDIA_TYPE"), answer.get("REF_ID"), "1", "", media_url);
     }
+
 
 
     /**

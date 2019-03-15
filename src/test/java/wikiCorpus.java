@@ -124,5 +124,23 @@ public class wikiCorpus {
         out.flush();
         out.close();
     }
+    @Test
+    public void testcaltfidf() throws Exception {
+        ObjectInputStream in = new ObjectInputStream(new FileInputStream(new File("/home/watt/corpus/data/keySet1")));
+        MapCount<String> mapCount = (MapCount<String>) in.readObject();
+        Map<String, Double> tfidf = new HashMap<String, Double>();
+        for (Map.Entry<String, int[]> one : mapCount.get().entrySet()) {
+            tfidf.put(one.getKey(), one.getValue()[0] * Math.log(1020652.0 / one.getValue()[2]));
+        }
+
+    }
+    @Test
+    public void readTfidf() throws Exception{
+        ObjectInputStream in = new ObjectInputStream(new FileInputStream(new File("/home/watt/corpus/data/tfidf")));
+        Map<String,Double> tfidf = (HashMap<String,Double>)in.readObject();
+        System.out.println(tfidf.get("的"));
+        System.out.println(tfidf.get("是"));
+        System.out.println(tfidf.get("为什么"));
+    }
 
 }

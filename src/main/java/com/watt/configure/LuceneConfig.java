@@ -21,6 +21,7 @@ public class LuceneConfig {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private String indexKey;
     private String vectorPath;
+    private String tfidfPath;
 
     private Directory getDirectory() {
             try {
@@ -75,4 +76,13 @@ public class LuceneConfig {
     public void setVectorPath(String vectorPath) {
         this.vectorPath = vectorPath;
     }
+
+    public String getTfidfPath() {
+        return tfidfPath;
+    }
+
+    public void setTfidfPath(String tfidfPath) {
+        this.tfidfPath = tfidfPath;
+    }
 }
+
