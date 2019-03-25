@@ -30,12 +30,4 @@ public class AtomSegment {
 
         return atomSegResult;
     }
-
-    public static void main(String[] args) {
-        String sentence = "呼吸道感染email出生于2017年7月28号。";
-        String sentence2 = "1.234呼吸道感染email:inspur@inspur.com出生于2017年7月28号。";
-        String sentence3 = "email地址";
-        String result = atomSegment(sentence3);
-        System.out.println(result);
-    }
 }

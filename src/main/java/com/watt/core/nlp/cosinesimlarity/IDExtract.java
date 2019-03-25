@@ -32,7 +32,6 @@ public class IDExtract {
                 return null;
             }
         } else {
-            System.out.println("未指定提取规则！");
             return null;
         }
     }
@@ -126,31 +125,5 @@ public class IDExtract {
     public static Map<Integer, String> getFloatNum(String param) {
         String regex_code = "([1-9]\\d*\\.\\d*|0\\.\\d*[1-9]\\d*)";
         return getStr(regex_code, param);
-    }
-
-    public static void main(String[] args) {
-        String s = "电话及传真：0531—66601130王AB1234电话号码8615953128866身份证号430528197810295353电子邮件地址jhwang@inspur.com座机0531-85105818银行卡4270300016729930，周小飞于2012-10-09购入一车，车牌号码鲁A5768N";
-        System.out.println("mobileStr===" + getTelNumber(s));
-        String t = "我要评论 2016年 05月 04日 04:36:16 来源。历下区派出所在2014年1月11日凌晨1时27分接到报警电话。2009-02-06武汉2月5日电。2013年12月29日早上8点41分。2013-12-29 14:08。12日14时28分。";
-        String cnt = "公元四百八十二年是哪一个朝代？文化大革命从一九六六年开始到一九七六年结束。一九九七年十二月十五日。生于一九四○年十一月二十三日五点零三分三十三秒。九二年那个春天。北京时间6日下午四点五十四分。13胜6负。";
-        String cnNum = "第二百三十一条：昨天工地要了一千五百吨水泥、一千吨沙子、一百零三吨石子。总共花销肆万零贰拾圆整。25日上午10点18分，成百上千只麻雀和数万只蜻蜓在麦田上空盘旋。工程款总额为五亿四千万。本届运动会共有有两百二十个人报名参加。第三两个人出行需并排。)二十九和五亿)。(1)二十九个人需申请。公园一九○八年。";
-        String floatNum = "圆周率是3.14。(2013.06-)。O.J.-。";
-        String perNum = "实验中学今年高考的升学率是百分之八十一点一九，即81.19%。山师附中今年高考的升学率是百分之七十点六，即70.6%。历城二中今年高考的升学率是百分之七十，即70%。本月销售额同比增长百分之两百零五，百分之235,235.108%。爸爸吃了二分之一，妈妈吃了八分之三，给波妞留了8分之1。这种食品中中的锌含量高达千分之30。13胜6负。4和6。001与003。1、23个人。在1989.01-1991.09间。参考文献：【2006〕44p。大约3%5%之间。范围在-0.6-1.60.0。在(3)二十九章内容。1948年8月。515元5毛。(1)二十九个人需申请。";
-        String idNum = "登记身份证号如下：3701021982xxxx0591、37010219******059X、37010281****059X。13胜6负。";
-        String carNum = "新J22088,的SUMMLY。13胜6负。";
-        String emailStr = "邮箱是zhangxian@inspur.com。OJ的邮箱是：O.J-J";
-        String urlStr = "O.J.-。ARISTOTLE384-322B.C。2013.06-1。在1977.01--1980.09期间。位于2.3-2.9之间。占比大约在80―90%。";
-        String mobileStr = "(1)二十九个人需申请。五亿)。二十四)。";
-        System.out.println("ID===" + getIDCard(idNum));
-        System.out.println("Time===" + getTime(t));
-        System.out.println("CNTime===" + getCNTime(cnt));
-        System.out.println("cnNum===" + getCNNum(cnNum));
-        System.out.println("folatNum===" + getFloatNum(floatNum));
-        System.out.println("perNum===" + getPerNum(perNum));
-        System.out.println("numbers===" + getNumbers(floatNum));
-        System.out.println("carNum===" + getCarNum(carNum));
-        System.out.println("emailStr===" + getEmail(emailStr));
-        System.out.println("urlStr===" + getURL(urlStr));
-        System.out.println("mobileStr===" + getMobile(s));
     }
 }
